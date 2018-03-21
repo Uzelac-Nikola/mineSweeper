@@ -31,3 +31,34 @@ var time = {
         }
     }
 }
+
+time.printTime(timerField);
+
+var intervalID;
+
+startTime.addEventListener('click', start);
+
+function start() {
+    startTime.setAttribute('disabled', 'true');
+    intervalID = setInterval(function() {
+        time.timer();
+        time.printTime(timerField);
+    }, 1000);
+}
+
+stopTime.addEventListener('click', stop);
+
+function stop() {
+    startTime.removeAttribute('disabled');
+    clearInterval(intervalID);
+}
+
+resetTime.addEventListener('click', reset);
+
+function reset() {
+    stop();
+    time.sec = 0;
+    time.min = 0;
+    time.hrs = 0;
+    time.printTime(timerField);
+}
